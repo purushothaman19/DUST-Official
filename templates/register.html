@@ -1,0 +1,21 @@
+{% extends 'bootstrap/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+{% include "header.html" %}
+
+
+  <div class="container">
+    <div class="row">
+      <img src="https://images.unsplash.com/photo-1589091637765-cbd0eff73a44?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80" width="1000" height="500" style="padding-left: 200px; padding-bottom: 100px">
+      <div class="col-lg-8 col-md-10 mx-auto">
+           <h1 style="text-align: center">Register Here!</h1>
+        {% for error in errors %}
+        <p style="color: blue"> {{ error }} </p>
+        {% endfor %}
+        {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

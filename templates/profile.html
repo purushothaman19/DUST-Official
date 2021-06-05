@@ -1,0 +1,151 @@
+{% extends 'bootstrap/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+{% include "header.html" %}
+<!-- Main -->
+
+<div id="main">
+
+	<!-- Post -->
+
+	<style>
+      h4 {
+        font-family: sans-serif;
+        margin: 50px auto;
+        color: #000;
+        text-align: center;
+        font-size: 20px;
+        max-width: 600px;
+        position: relative;
+      }
+      h4:before {
+        content: "";
+        display: block;
+        width: 200px;
+        height: 2px;
+        background: grey;
+        left: 0;
+        top: 50%;
+        position: absolute;
+      }
+      h4:after {
+        content: "";
+        display: block;
+        width: 200px;
+        height: 2px;
+        background: grey;
+        right: 0;
+        top: 50%;
+        position: absolute;
+      }
+
+    </style>
+
+		<article class="post">
+			<header>
+<!--				<p> post </p>-->
+
+
+				<div class="title" style="background-image: url(https://i.picsum.photos/id/1023/3955/2094.jpg?hmac=AW_7mARdoPWuI7sr6SG8t-2fScyyewuNscwMWtQRawU); background-size:100%;">
+					<h2><a href="#"> {{ data['title'] }} </a></h2>
+
+					<p> {{ data['sort'] }} </p>
+				</div>
+
+				<div class="meta">
+                    <img width="70%" style="margin: 0 20%" src="{{ data['img_url'] }}" alt="" />
+				</div>
+
+			</header>
+			<span class="image featured"><img src="images/pic01.jpg" alt="" /></span>
+			<!-- Parts -->
+			<div style="text-align: right">
+				<h1><a href="#">  {{ data['title'] }} </a></h1>
+				<hr style="border-top: 5px solid black;">
+			</div>
+
+			{% if series %}
+			<h4> part </h4>
+			{% endif %}
+
+			<p align="justify"> {{ data['body'] }} </p>
+
+			<footer>
+
+<!--				<ul class="stats" style="padding-right: 10%">-->
+
+<!--					<li><a href=" url_for('search_query', query=post.genre) "> post.genre </a></li>-->
+<!--&lt;!&ndash;					<li> admin </li>&ndash;&gt;-->
+
+<!--					<li><a href=" url_for('single_post', like=True, post_id=post_id, admin=admin) " class="icon solid fa-heart"> post.likes|length </a></li>-->
+<!--					<li><a href=" url_for('single_post', comment=True, post_id=post_id, admin=admin) " class="icon solid fa-comment"> post.comments|length </a></li>-->
+
+
+<!--					{% if comment %}-->
+<!--					<li>-->
+<!--						<div class="container" >-->
+<!--							<div class="row">-->
+<!--							  <div class="col-lg-8 col-md-10 mx-auto" style="padding-left:10px">-->
+<!--								 ckeditor.load() -->
+<!--								 ckeditor.config(name='body') -->
+<!--								 wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) -->
+<!--							  </div>-->
+<!--							</div>-->
+<!--						</div>-->
+<!--					</li>-->
+<!--					{% endif %}-->
+
+<!--					</ul>-->
+
+<!--					<style>-->
+<!--						ul#menu li {-->
+<!--						  display:inline;-->
+<!--						}-->
+<!--					</style>-->
+
+					<ul class="stats menu" style="padding-left: 20% display: inline">
+
+						<li>
+							<div class="col-lg-8 col-md-10 mx-auto comment">
+							</div>
+						</li>
+
+				</ul>
+
+			</footer>
+
+			<hr style="width:100%;text-align:center;margin-left:0">
+			<!-- Footer -->
+
+					<div>
+					<section id="footer">
+
+						<ul class="icons">
+<!--							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>-->
+<!--							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>-->
+							<li><a href="https://www.instagram.com/dustyofficialy/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+<!--							<li><a href="#" class="icon solid fa-rss"><span class="label">RSS</span></a></li>-->
+							<li><a href="mailto:dustyofficial1@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+							<li><a href="http://github.com/purushothaman19" class="fab fa-github"><span class="label">Github</span></a></li>
+						</ul>
+
+						<p class="copyright">&copy; DUST. Design: <a href="http://github.com/purushothaman19">Purush G</a>. Images: <a href="http://unsplash.com">Unsplash</a>.</p>
+					</section>
+
+					</div>
+
+					<!-- Scripts -->
+					<script src="static/js/jquery.min.js"></script>
+					<script src="static/js/browser.min.js"></script>
+					<script src="static/js/breakpoints.min.js"></script>
+					<script src="static/js/util.js"></script>
+					<script src="static/js/main.js"></script>
+
+					</body>
+					</html>
+
+		</article>
+
+</div>
+{% endblock %}
