@@ -365,17 +365,13 @@ def register():
 
             login_user(new_user)
 
-            # return f'<h1> {current_user.is_authenticated} </h1>'
-
-            # return f"<h1> {request.form.get('email'), request.form.get('name'), request.form.get('password')} </h1>"
-
-            # with smtplib.SMTP('smtp.gmail.com', 587) as connection:
-            #     connection.starttls()
-            #     connection.login(MY_EMAIL, MY_PASSWORD)
-            #     connection.sendmail(from_addr=MY_EMAIL,
-            #                         to_addrs=request.form.get('email'),
-            #                         msg=f"Subject:WELCOME TO DUST\n\nWelcome {request.form.get('name')}! Happy to see"
-            #                             f"you with us. Thanks for supporting! Keep rocking!".encode('utf-8'))
+            with smtplib.SMTP('smtp.gmail.com', 587) as connection:
+                connection.starttls()
+                connection.login(MY_EMAIL, MY_PASSWORD)
+                connection.sendmail(from_addr=MY_EMAIL,
+                                    to_addrs=request.form.get('email'),
+                                    msg=f"Subject:WELCOME TO DUST\n\nWelcome {request.form.get('name')}! Happy to see"
+                                        f"you with us. Thanks for supporting! Keep rocking!".encode('utf-8'))
 
             return redirect(url_for('home', admin=admin))
 
@@ -392,12 +388,7 @@ def login():
         email = request.form.get('email')
         password = request.form.get('password')
 
-        # return f"<h1> {email} </h1>"
-
-        # Find user by email entered.
         user = User.query.filter_by(email=email).first()
-
-        # return f"<h1> {user} </h1>"
 
         if not user:
             errors.append("That email does not exist, please Register and then come back.")
