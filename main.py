@@ -151,14 +151,8 @@ class Like(db.Model):
     likes = db.Column(db.Integer)
 
 
-# db.create_all()
-# db.session.commit()
-
-# for i in range(1, 10):
-#     users = Comment.query.get(i)
-#     print(users)
-#     db.session.delete(users)
-#     db.session.commit()
+db.create_all()
+db.session.commit()
 
 
 # WTForm
