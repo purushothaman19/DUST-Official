@@ -9,6 +9,7 @@ from flask_login import UserMixin, login_user, LoginManager, login_required, cur
 from flask_gravatar import Gravatar
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField
+from wtforms.fields.html5 import EmailField
 from wtforms.validators import DataRequired, URL
 from sqlalchemy.orm import relationship
 from functools import wraps
@@ -162,12 +163,12 @@ class CreatePostForm(FlaskForm):
     img_url = StringField("Blog Image URL", validators=[DataRequired(), URL()])
     body = CKEditorField("Blog Content", validators=[DataRequired()])
     Genre = StringField("Genre", validators=[DataRequired()])
-    img_url_part = StringField("Part Image URL", validators=[URL()])
+    img_url_part = StringField("Part Image URL", validators=[DataRequired(message="Please insert part image"), URL()])
     submit = SubmitField("Submit Post")
 
 
 class RegisterForm(FlaskForm):
-    email = StringField('Email-ID', validators=[DataRequired(message='Enter a valid email-id')])
+    email = EmailField('Email-ID', validators=[DataRequired(message='Enter a valid email-id')])
     password = PasswordField('Password', validators=[DataRequired()])
     name = StringField('Name', validators=[DataRequired()])
     submit = SubmitField('Submit')
