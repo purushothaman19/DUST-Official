@@ -359,13 +359,14 @@ def register():
 
             login_user(new_user)
 
-            with smtplib.SMTP('smtp.gmail.com', 587) as connection:
-                connection.starttls()
-                connection.login(MY_EMAIL, MY_PASSWORD)
-                connection.sendmail(from_addr=MY_EMAIL,
-                                    to_addrs=request.form.get('email'),
-                                    msg=f"Subject:WELCOME TO DUST\n\nWelcome {request.form.get('name')}! Happy to see"
-                                        f"you with us. Thanks for supporting! Keep rocking!".encode('utf-8'))
+            if not admin:
+                with smtplib.SMTP('smtp.gmail.com', 587) as connection:
+                    connection.starttls()
+                    connection.login(MY_EMAIL, MY_PASSWORD)
+                    connection.sendmail(from_addr=MY_EMAIL,
+                                        to_addrs=request.form.get('email'),
+                                        msg=f"Subject:WELCOME TO DUST\n\nWelcome {request.form.get('name')}! Happy to see"
+                                            f"you with us. Thanks for supporting! Keep rocking!".encode('utf-8'))
 
             return redirect(url_for('home', admin=admin))
 
